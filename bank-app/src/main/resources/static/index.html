@@ -3,62 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank App</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Bank Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Bank Account Management</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Bank Account Manager</h1>
 
-<!-- Section for Creating Account -->
-<section>
-    <h2>Create Account</h2>
-    <form id="create-account-form">
-        <label for="account-id">Account ID:</label>
-        <input type="number" id="account-id" name="account-id" required>
-        <label for="account-balance">Initial Balance:</label>
-        <input type="number" id="account-balance" name="account-balance" required>
-        <button type="submit">Create Account</button>
-    </form>
-    <div id="create-account-result"></div>
-</section>
+    <!-- Create Account Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Create Account</h2>
+        </div>
+        <div class="card-body">
+            <form id="create-account-form">
+                <div class="mb-3">
+                    <label for="account-id" class="form-label">Account ID</label>
+                    <input type="number" id="account-id" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="account-balance" class="form-label">Initial Balance</label>
+                    <input type="number" id="account-balance" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p id="create-account-response" class="response-message"></p>
+        </div>
+    </div>
 
-<!-- Section for Getting Account Details -->
-<section>
-    <h2>Get Account Details</h2>
-    <form id="get-account-form">
-        <label for="get-account-id">Account ID:</label>
-        <input type="number" id="get-account-id" name="get-account-id" required>
-        <button type="submit">Get Account</button>
-    </form>
-    <div id="get-account-result"></div>
-</section>
+    <!-- Get Account Details -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Get Account Details</h2>
+        </div>
+        <div class="card-body">
+            <form id="get-account-form">
+                <div class="mb-3">
+                    <label for="get-account-id" class="form-label">Account ID</label>
+                    <input type="number" id="get-account-id" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-info">Get Account</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p id="account-details-response" class="response-message"></p>
+        </div>
+    </div>
 
-<!-- Section for Deposit -->
-<section>
-    <h2>Deposit to Account</h2>
-    <form id="deposit-form">
-        <label for="deposit-account-id">Account ID:</label>
-        <input type="number" id="deposit-account-id" name="deposit-account-id" required>
-        <label for="deposit-amount">Amount:</label>
-        <input type="number" id="deposit-amount" name="deposit-amount" required>
-        <button type="submit">Deposit</button>
-    </form>
-    <div id="deposit-result"></div>
-</section>
+    <!-- Deposit Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Deposit Money</h2>
+        </div>
+        <div class="card-body">
+            <form id="deposit-form">
+                <div class="mb-3">
+                    <label for="deposit-account-id" class="form-label">Account ID</label>
+                    <input type="number" id="deposit-account-id" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="deposit-amount" class="form-label">Amount</label>
+                    <input type="number" id="deposit-amount" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Deposit</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p id="deposit-response" class="response-message"></p>
+        </div>
+    </div>
 
-<!-- Section for Withdrawal -->
-<section>
-    <h2>Withdraw from Account</h2>
-    <form id="withdraw-form">
-        <label for="withdraw-account-id">Account ID:</label>
-        <input type="number" id="withdraw-account-id" name="withdraw-account-id" required>
-        <label for="withdraw-amount">Amount:</label>
-        <input type="number" id="withdraw-amount" name="withdraw-amount" required>
-        <button type="submit">Withdraw</button>
-    </form>
-    <div id="withdraw-result"></div>
-</section>
+    <!-- Withdraw Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Withdraw Money</h2>
+        </div>
+        <div class="card-body">
+            <form id="withdraw-form">
+                <div class="mb-3">
+                    <label for="withdraw-account-id" class="form-label">Account ID</label>
+                    <input type="number" id="withdraw-account-id" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="withdraw-amount" class="form-label">Amount</label>
+                    <input type="number" id="withdraw-amount" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Withdraw</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p id="withdraw-response" class="response-message"></p>
+        </div>
+    </div>
+</div>
 
-<script src="js/main.js"></script>
+<script src="js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
