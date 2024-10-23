@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<h1>Bank Account Management</h1>
+
+<!-- Section for Creating Account -->
+<section>
+    <h2>Create Account</h2>
+    <form id="create-account-form">
+        <label for="account-id">Account ID:</label>
+        <input type="number" id="account-id" name="account-id" required>
+        <label for="account-balance">Initial Balance:</label>
+        <input type="number" id="account-balance" name="account-balance" required>
+        <button type="submit">Create Account</button>
+    </form>
+    <div id="create-account-result"></div>
+</section>
+
+<!-- Section for Getting Account Details -->
+<section>
+    <h2>Get Account Details</h2>
+    <form id="get-account-form">
+        <label for="get-account-id">Account ID:</label>
+        <input type="number" id="get-account-id" name="get-account-id" required>
+        <button type="submit">Get Account</button>
+    </form>
+    <div id="get-account-result"></div>
+</section>
+
+<!-- Section for Deposit -->
+<section>
+    <h2>Deposit to Account</h2>
+    <form id="deposit-form">
+        <label for="deposit-account-id">Account ID:</label>
+        <input type="number" id="deposit-account-id" name="deposit-account-id" required>
+        <label for="deposit-amount">Amount:</label>
+        <input type="number" id="deposit-amount" name="deposit-amount" required>
+        <button type="submit">Deposit</button>
+    </form>
+    <div id="deposit-result"></div>
+</section>
+
+<!-- Section for Withdrawal -->
+<section>
+    <h2>Withdraw from Account</h2>
+    <form id="withdraw-form">
+        <label for="withdraw-account-id">Account ID:</label>
+        <input type="number" id="withdraw-account-id" name="withdraw-account-id" required>
+        <label for="withdraw-amount">Amount:</label>
+        <input type="number" id="withdraw-amount" name="withdraw-amount" required>
+        <button type="submit">Withdraw</button>
+    </form>
+    <div id="withdraw-result"></div>
+</section>
+
+<script src="js/main.js"></script>
+</body>
+</html>
