@@ -1,85 +1,84 @@
-// Handle account creation
-document.getElementById("create-account-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const accountId = parseInt(document.getElementById("account-id").value);
-    const accountBalance = parseFloat(document.getElementById("account-balance").value);
+// Function to handle creating an account
+function createAccount() {
+    const accountData = {
+        name: document.getElementById('name').value,
+        balance: parseFloat(document.getElementById('balance').value)
+    };
 
-    fetch("/api/accounts", {
-        method: "POST",
+    fetch('/api/accounts', {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            id: accountId,
-            balance: accountBalance
-        })
+        body: JSON.stringify(accountData),
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("create-account-response").innerText = "Account created: ID = " + data.id + ", Balance = " + data.balance;
+        document.getElementById('result').innerHTML = `<div class="alert alert-success">Account created successfully! Account ID: ${data.id}</div>`;
     })
     .catch(error => {
-        document.getElementById("create-account-response").innerText = "Error creating account!";
+        document.getElementById('result').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
     });
-});
+}
 
-// Handle fetching account details
-document.getElementById("get-account-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const accountId = parseInt(document.getElementById("get-account-id").value);
+// Function to handle fetching account details
+function getAccount() {
+    const accountId = document.getElementById('accountId').value;
 
-    fetch(`/api/accounts/${accountId}`, {
-        method: "GET"
-    })
+    fetch(`/api/accounts/${accountId}`)
     .then(response => response.json())
     .then(data => {
-        document.getElementById("account-details-response").innerText = "Account ID: " + data.id + ", Balance: " + data.balance;
+        document.getElementById('result').innerHTML = `
+            <div class="alert alert-info">
+                <strong>Account Details:</strong><br>
+                Account ID: ${data.id}<br>
+                Name: ${data.name}<br>
+                Balance: ${data.balance}
+            </div>`;
     })
     .catch(error => {
-        document.getElementById("account-details-response").innerText = "Error fetching account!";
+        document.getElementById('result').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
     });
-});
+}
 
-// Handle deposit
-document.getElementById("deposit-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const accountId = parseInt(document.getElementById("deposit-account-id").value);
-    const amount = parseFloat(document.getElementById("deposit-amount").value);
+// Function to handle deposits
+function deposit() {
+    const accountId = document.getElementById('accountId').value;
+    const depositAmount = parseFloat(document.getElementById('amount').value);
 
     fetch(`/api/accounts/${accountId}/deposit`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: amount })
+        body: JSON.stringify({ amount: depositAmount }),
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("deposit-response").innerText = "Deposit successful! New Balance: " + data.balance;
+        document.getElementById('result').innerHTML = `<div class="alert alert-success">Deposit successful! New Balance: ${data.balance}</div>`;
     })
     .catch(error => {
-        document.getElementById("deposit-response").innerText = "Error depositing money!";
+        document.getElementById('result').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
     });
-});
+}
 
-// Handle withdraw
-document.getElementById("withdraw-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const accountId = parseInt(document.getElementById("withdraw-account-id").value);
-    const amount = parseFloat(document.getElementById("withdraw-amount").value);
+// Function to handle withdrawals
+function withdraw() {
+    const accountId = document.getElementById('accountId').value;
+    const withdrawAmount = parseFloat(document.getElementById('amount').value);
 
     fetch(`/api/accounts/${accountId}/withdraw`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: amount })
+        body: JSON.stringify({ amount: withdrawAmount }),
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("withdraw-response").innerText = "Withdrawal successful! New Balance: " + data.balance;
+        document.getElementById('result').innerHTML = `<div class="alert alert-success">Withdrawal successful! New Balance: ${data.balance}</div>`;
     })
     .catch(error => {
-        document.getElementById("withdraw-response").innerText = "Error withdrawing money!";
+        document.getElementById('result').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
     });
-});
+}
